@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logo: MyString
+  name: MyString
+  website: MyString
+  status: 1
+  event: one
+
+two:
+  logo: MyString
+  name: MyString
+  website: MyString
+  status: 1
+  event: two
