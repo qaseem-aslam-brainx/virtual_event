@@ -1,6 +1,6 @@
 class SponsorsController < ApplicationController
-  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
 
   def index
     @sponsors = @event.sponsors
@@ -47,7 +47,7 @@ class SponsorsController < ApplicationController
   end
 
   def set_sponsor
-    @sponsor = @event.sponsor.find(params[:id])
+    @sponsor = @event.sponsors.find(params[:id])
   end
 
   def sponsor_params
