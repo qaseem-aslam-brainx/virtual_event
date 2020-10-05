@@ -1,6 +1,6 @@
 class SponsorsController < ApplicationController
   before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
-  before_action :get_event
+  before_action :set_event
 
   def index
     @sponsors = @event.sponsors
@@ -14,7 +14,7 @@ class SponsorsController < ApplicationController
     @sponsor = @event.sponsors.build(sponsor_params)
 
     if @sponsor.save
-      redirect_to Event.find(@sponsor.event_id)
+      redirect_to @event
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class SponsorsController < ApplicationController
 
   def update
     if @sponsor.update(sponsor_params)
-      redirect_to event_sponsors_path
+      redirect_to event_sponsors_path(@event)
     else
       render 'edit'
     end
@@ -37,19 +37,20 @@ class SponsorsController < ApplicationController
   def destroy
     @sponsor.destroy
 
-    redirect_to event_sponsors_path
+    redirect_to event_sponsors_path(@event)
   end
 
   private
-  def get_event
+
+  def set_event
     @event = Event.find(params[:event_id])
   end
 
   def set_sponsor
-    @sponsor = Sponsor.find(params[:id])
+    @sponsor = @event.sponsor.find(params[:id])
   end
 
   def sponsor_params
-    params.require(:sponsor).permit(:logo, :name, :website, :status, :event_id)
+    params.require(:sponsor).permit(:logo, :name, :website, :status)
   end
 end
