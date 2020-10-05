@@ -1,0 +1,22 @@
+<p>
+  <strong>Logo:</strong>
+  <%= @sponsor.logo %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @sponsor.name %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <%= @sponsor.website %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @sponsor.status %>
+</p>
+
+<td><%= link_to 'Edit', edit_event_sponsor_path %></td> |
+<td><%= link_to 'Destroy', event_sponsors_path,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td> |
+<td><%= link_to 'Back', event_sponsors_path %></td>

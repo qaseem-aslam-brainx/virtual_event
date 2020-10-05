@@ -18,3 +18,31 @@
   <strong>Time End:</strong>
   <%= @event.time_end %>
 </p>
+<h2>Sponsors List</h2>
+<table border="1">
+  <tr>
+    <th>Logo</th>
+    <th>Name</th>
+    <th>Website</th>
+    <th>Status</th>
+  </tr>
+  <% @event.sponsors.each do |sponsor| %>
+    <tr>
+      <td><%= sponsor.logo %></td>
+      <td><%= sponsor.name %></td>
+      <td><%= sponsor.website %></td>
+      <td><%= sponsor.status %></td>
+
+      <td><%= link_to 'Show', event_sponsor_path(event_id: @event.id, id: sponsor.id) %></td>
+      <td><%= link_to 'Edit', edit_event_sponsor_path(@event, sponsor) %></td>
+      <td><%= link_to 'Destroy', event_sponsor_path(@event, sponsor),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to 'Add Sponsor', new_event_sponsor_path(@event) %> |
+  <%= link_to 'Back', events_path %>
+</p>

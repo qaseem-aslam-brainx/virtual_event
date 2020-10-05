@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def index
     @events = Event.all
   end
@@ -22,6 +21,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @event.sponsors = Sponsor.where("event_id = ?", params[:id])
   end
 
   def edit

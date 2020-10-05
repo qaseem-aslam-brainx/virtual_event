@@ -1,0 +1,34 @@
+<h1>All Sponsors</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Event Name</th>
+    <th>Sponsor Name</th>
+    <th>Website</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sponsors.each do |sponsor| %>
+    <tr>
+      <td><%= sponsor.event.title %></td>
+      <td><%= sponsor.name %></td>
+      <td><%= sponsor.website %></td>
+      <td><%= sponsor.status %></td>
+
+      <td><%= link_to 'Show Event', event_path(@event) %></td>
+      <td><%= link_to 'Edit Sponsor', edit_event_sponsor_path(@event, sponsor) %></td>
+      <td><%= link_to 'Destroy Sponsor', event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_event_sponsor_path(@event) %>
