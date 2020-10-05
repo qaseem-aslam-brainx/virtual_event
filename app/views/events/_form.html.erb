@@ -1,0 +1,38 @@
+<%= form_with model: @event, local: true do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@event.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :logo %>
+    <%= form.text_field :logo%>
+  </p>
+  <p>
+    <%= form.label :date %>
+    <%= date_field(:event, :date) %>
+  </p>
+  <p>
+    <%= form.label :time_start %>
+    <%= time_field(:event, :time_start) %>
+  </p>
+  <p>
+    <%= form.label :time_end %>
+    <%= time_field(:event, :time_end) %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
