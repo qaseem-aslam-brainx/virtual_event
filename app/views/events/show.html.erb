@@ -42,7 +42,31 @@
   <% end %>
 </table>
 
+<h2>Attendees List</h2>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone No</th>
+  </tr>
+  <% @event.attendees.each do |attendee| %>
+    <tr>
+      <td><%= attendee.first_name + ' ' + attendee.last_name %></td>
+      <td><%= attendee.email %></td>
+      <td><%= attendee.phone_no %></td>
+
+      <td><%= link_to 'Show', event_attendee_path(event_id: @event.id, id: attendee.id) %></td>
+      <td><%= link_to 'Edit', edit_event_attendee_path(@event, attendee) %></td>
+      <td><%= link_to 'Destroy', event_attendee_path(@event, attendee),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
 <p>
   <%= link_to 'Add Sponsor', new_event_sponsor_path(@event) %> |
+  <%= link_to 'Add Attendees', new_event_attendee_path(@event) %> |
+
   <%= link_to 'Back', events_path %>
 </p>
