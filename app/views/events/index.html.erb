@@ -1,9 +1,12 @@
 <%= link_to 'New Event', new_event_path %>
 <h1>All Events</h1>
-<table>
+<table border="1">
   <tr>
+    <th>Logo</th>
     <th>Title</th>
-    <th>Text</th>
+    <th>Date</th>
+    <th>Time Start</th>
+    <th>Time End</th>
   </tr>
   <% @events.each do |event| %>
     <tr>
