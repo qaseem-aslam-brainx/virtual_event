@@ -5,6 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, presence: true, uniqueness: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :encrypted_password, presence: true,
-            unless: Proc.new { |a| a.password.blank? }
+  validates :encrypted_password, :first_name, :last_name, presence: true
 end
