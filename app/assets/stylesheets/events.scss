@@ -1,3 +1,83 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.event-view {
+  * {
+    box-sizing: border-box;
+  }
+
+  .heading {
+    font-size: 25px;
+    margin-top: 30px;
+    font-family: Avenir;
+    display: inline-block;
+  }
+
+  .button {
+    width: 167px;
+    height: 50px;
+    background: var(--btn-background);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: Avenir;
+    color: white;
+    font-weight: bold;
+    border: 1px solid var(--btn-background);
+  }
+
+  .sub-heading {
+    display: inline-block;
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .dim-heading {
+    font-size: 16px;
+    font-family: Avenir;
+    color: #363035;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .data-format {
+    font-size: 18px;
+    font-family: Avenir;
+    color: #1b1b1b;
+    text-transform: uppercase;
+  }
+
+  .icon {
+    width: 45px;
+    height: 40px;
+    background: #ffffff;
+    border: 0.5px solid #becad6;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 0 0 10px;
+  }
+
+  .icons {
+    margin-top: 20px;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .blue {
+    color: blue;
+  }
+
+  .box {
+    background: #ffffff;
+    box-shadow: 0 6px 10px #6596ff26;
+    border-radius: 12px;
+    margin: 10px;
+  }
+
+  .col-min-width {
+    min-width: 300px;
+  }
+}

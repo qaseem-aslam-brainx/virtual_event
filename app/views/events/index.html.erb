@@ -1,26 +1,57 @@
 <%= link_to 'New Event', new_event_path %>
-<h1>All Events</h1>
-<table border="1">
-  <tr>
-    <th>Logo</th>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Time Start</th>
-    <th>Time End</th>
-  </tr>
-  <% @events.each do |event| %>
-    <tr>
-      <td><%= event.logo %></td>
-      <td><%= event.title %></td>
-      <td><%= event.date %></td>
-      <td><%= event.time_start %></td>
-      <td><%= event.time_end %></td>
 
-      <td><%= link_to 'Show', event_path(event) %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event_path(event),
+<div class="event-view">
+  <div class="container mt-3">
+    <div class="d-flex justify-content-between col-min-width p-0">
+      <span class="heading">Events</span>
+      <%= button_to 'Create Event', new_event_path, method: :get, class: "button" %>
+      <!--<button class="button">Create Event</button>-->
+    </div>
+    <div class="row d-flex justify-content-between">
+
+      <% @events.each do |event| %>
+
+        <div class="col-md col-sm-12 col-xs col-min-width mx-3 box p-3">
+          <div class="d-flex justify-content-between">
+            <h2 class="sub-heading"><%= event.title %></h2>
+            <div class="switch custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="switch3" name="example">
+              <label class="custom-control-label" for="switch3"></label>
+            </div>
+          </div>
+          <p class="m-0 mt-4 dim-heading">Date</p>
+          <p class="data-format"><%= event.date %></p>
+
+          <div class="col p-0 d-flex justify-content-between">
+            <div class="mt-4">
+              <p class="m-0 dim-heading">Time</p>
+              <p class="data-format"><%= event.time_start + ' ' + event.time_end%> </p>
+            </div>
+            <div class="icons">
+              <i class="fas fa-trash icon red"></i>
+              <i class="fas fa-pencil-alt icon blue"></i>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<tr>
+      <td><%#= event.logo %></td>
+      <td><%#= event.title %></td>
+      <td><%#= event.date %></td>
+      <td><%#= event.time_start %></td>
+      <td><%#= event.time_end %></td>
+
+      <td><%#= link_to 'Show', event_path(event) %></td>
+      <td><%#= link_to 'Edit', edit_event_path(event) %></td>
+      <td><%#= link_to 'Destroy', event_path(event),
                       method: :delete,
                       data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+    </tr>-->
+
