@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
-<<<<<<< HEAD
-=======
   before_action :find_event, only: [:show, :edit, :update, :destroy]
 
->>>>>>> develop
   def index
     @events = Event.all
   end
