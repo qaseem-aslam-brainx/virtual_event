@@ -1,6 +1,6 @@
-<title>Login to Virtual Event</title>
-<div class="login-view">
-  <div class="container card mt mt pl-5 pr-5 pt-4 pb-4">
+<%= content_for :title, 'Log in' %>
+<div class="login">
+  <div class="container card pl-5 pr-5 pt-4 pb-4">
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

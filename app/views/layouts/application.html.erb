@@ -4,6 +4,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <title>
+      <%= if content_for?(:title)
+            yield(:title) + ' | '
+          end %>
+      Virtual Event
+    </title>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Avenir">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -27,7 +34,7 @@
 
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt icon-logout"></i>
-                <span id="sign-out">Sign Out</span><br>
+                <span class="sign-out">Sign Out</span><br>
               <% end %>
 
               <p class="email"><%= current_user.email %></p>
