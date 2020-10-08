@@ -37,7 +37,7 @@ class AttendeesController < ApplicationController
   def destroy
     @attendee.destroy
 
-    redirect_to event_attendees_path
+    redirect_to event_attendees_path(@event) 
   end
 
   private
