@@ -1,6 +1,6 @@
 class AttendeesController < ApplicationController
-  before_action :set_attendee, only: [:show, :edit, :update, :destroy]
   before_action :set_event
+  before_action :set_attendee, only: [:show, :edit, :update, :destroy]
 
   def index
     @attendees = @event.attendees
@@ -14,7 +14,7 @@ class AttendeesController < ApplicationController
     @attendee = @event.attendees.build(attendee_params)
 
     if @attendee.save
-      redirect_to Event.find(@attendee.event_id)
+      redirect_to events_path
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class AttendeesController < ApplicationController
 
   def update
     if @attendee.update(attendee_params)
-      redirect_to event_attendees_path
+      redirect_to event_attendees_path(@event)
     else
       render 'edit'
     end
