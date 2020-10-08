@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'events#index'
 
   devise_for :users
   # get 'login/index'
@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   resources :events do
     resources :sponsors
   end
-
-  root 'events#index'
 end
