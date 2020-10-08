@@ -1,0 +1,21 @@
+<nav>
+  <div class="d-flex justify-content-end container p-0">
+    <% if user_signed_in? %>
+      <div class="outer-border">
+        <button class="circle-button" type="button" data-toggle="dropdown"><%= current_user.first_name[0].upcase %></button>
+        <div class="dropdown-menu dropdown-menu-right logout pt-3 pl-3 pr-3">
+
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt icon-logout"></i>
+            <span class="sign-out">Sign Out</span><br>
+          <% end %>
+
+          <p class="email"><%= current_user.email %></p>
+        </div>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %>&nbsp;|&nbsp;
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+    </div>
+  </div>
+</nav>

@@ -4,13 +4,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.new
   end
 
   def create
-    @event = Event.new(event_params)
-
-    @event.user_id = current_user.id
+    @event = current_user.events.build(event_params)
+    # @event.user_id = current_user.id
 
     if @event.save
       redirect_to @event
@@ -29,6 +28,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event.user_id = current_user.id
 
     if @event.update(event_params)
       redirect_to @event
@@ -47,6 +47,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :logo, :date, :time_start, :time_end, :user_id)
+    params.require(:event).permit(:title, :logo, :date, :time_start, :time_end, :status, :user_id)
   end
 end

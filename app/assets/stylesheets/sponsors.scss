@@ -1,3 +1,121 @@
 // Place all the styles related to the Sponsors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.sponsor {
+  .heading {
+    font-size: 25px;
+    display: flex;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  ul.tabs {
+    list-style-type: none;
+  }
+
+  ul.tabs li {
+    font-size: 16px;
+  }
+
+  .active-tab {
+    border-bottom: 3px solid var(--active-tab-color);
+    color: var(--active-tab-color);
+  }
+
+  ul.tabs li a {
+    display: flex;
+    color: var(--text-color);
+    padding: 10px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  ul.tabs li a:hover {
+    border-bottom: 3px solid var(--active-tab-color);
+    color: var(--active-tab-color);
+  }
+
+  .back-btn {
+    width: 121px;
+    height: 42px;
+    background: #e9ecef;
+    border-radius: 10px;
+    text-align: center;
+    font: normal normal 900 16px/22px Avenir;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    letter-spacing: 0.8px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    background: var(--btn-background);
+  }
+
+  .sponsor-button {
+    width: 170px;
+    color: white;
+    border: 2px solid var(--btn-background);
+    text-align: center;
+    height: 50px;
+    font: normal normal 900 16px/48px Avenir;
+    letter-spacing: 0.8px;
+    background: var(--btn-background);
+    text-decoration: none;
+    border-radius: 10px;
+  }
+
+  .box {
+    background: white;
+    box-shadow: 0 6px 10px #6596ff26;
+    border-radius: 12px;
+  }
+
+  table.list-main {
+    width: 100%;
+    text-align: center;
+  }
+
+  table.list-main th {
+    background: rgb(238, 235, 235);
+    padding: 15px;
+    opacity: 0.7;
+  }
+
+  table.list-main td {
+    padding: 15px 5px 15px 5px;
+    color: var(--text-color);
+  }
+
+  table.list-main,
+  table.list-main th,
+  table.list-main td {
+    border-top: 1px solid rgb(195, 190, 190);
+    border-collapse: collapse;
+  }
+
+  .status {
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px 20px;
+  }
+
+  .status.active {
+    background: var(--btn-background);
+  }
+
+  .status.deactive {
+    background: #becad6;
+  }
+
+  .options {
+    border: 1px solid #9e9898;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .col-pixel-width-900 {
+    flex: 0 0 900px;
+  }
+
+}

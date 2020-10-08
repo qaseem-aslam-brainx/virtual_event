@@ -1,31 +1,63 @@
-<h1>All Sponsors</h1>
+<div class="sponsor">
+  <div class="container mt-5 col-pixel-width-900">
+    <div>
+      <h1 class="heading">Virtual Fair</h1>
+    </div>
+    <div class="row d-flex justify-content-between p-4">
+      <ul class="nav tabs ml-4">
+        <li><a href="#">Event Detail</a></li>
+        <li><a href="#">Vendor</a></li>
+        <li><a href="#" class="active-tab">Sponsors</a></li>
+        <li><a href="#">Ateendees</a></li>
+      </ul>
 
-<table border="1">
-  <thead>
-  <tr>
-    <th>Event Name</th>
-    <th>Sponsor Name</th>
-    <th>Website</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @sponsors.each do |sponsor| %>
-    <tr>
-      <td><%= sponsor.event.title %></td>
-      <td><%= sponsor.name %></td>
-      <td><%= sponsor.website %></td>
-      <td><%= sponsor.status %></td>
-
-      <td><%= link_to 'Show Event', event_path(@event) %></td>
-      <td><%= link_to 'Edit Sponsor', edit_event_sponsor_path(@event, sponsor) %></td>
-      <td><%= link_to 'Destroy Sponsor', event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sponsor', new_event_sponsor_path(@event) %>
+      <%= button_to events_path, method: :get, class: "event-button back-btn" do %>
+        <i class="fa fa-arrow-left"></i>Back
+      <% end %>
+    </div>
+    <div class=" container box p-0">
+      <div class="row d-flex justify-content-between pl-5 pr-5 pt-4 pb-4">
+        <span class="heading mt-1">Sponsors</span>
+        <%= button_to 'Add Sponsor', new_event_sponsor_path, method: :get, class: "sponsor-button" %>
+      </div>
+      <table class="list-main" cellspacing="0">
+        <tr>
+          <th>#</th>
+          <th>Sponsor Logo</th>
+          <th>Sponsor Name</th>
+          <th>Sponsor Website</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        <% @sponsors.each do |sponsor| %>
+          <tr>
+            <td><%= sponsor.id %></td>
+            <td><img class="logo-img" src="<%= sponsor.logo %>"></td>
+            <td><%= sponsor.name %></td>
+            <td><%= sponsor.website %></td>
+            <td><span class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span></td>
+            <td>
+              <div class="dropdown">
+                <a href="#" class="fas fa-ellipsis-h options" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                  <%= link_to edit_event_sponsor_path(@event, sponsor) do %>
+                    <i class="fas fa-pencil-alt fa-fw fa-xs p-2"></i><span class="m-3">Edit Sponsor</span>
+                  <% end %>
+                  <br>
+                  <%= link_to toggle_status_event_sponsor_path(@event, sponsor), class: "black" do %>
+                    <i class="fas fa-check-circle fa-fw fa-xs p-2"></i><span class="m-3"><%= sponsor.deactive? ? "Activate" : "Deactivate" %></span>
+                  <% end %>
+                  <br>
+                  <%= link_to event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' }, class: "red" do %>
+                    <i class="fas fa-trash-alt fa-fw fa-xs red p-2"></i><span class="m-3">Delete</span>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

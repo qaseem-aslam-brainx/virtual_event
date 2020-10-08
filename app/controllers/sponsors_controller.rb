@@ -1,6 +1,6 @@
 class SponsorsController < ApplicationController
   before_action :set_event
-  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
+  before_action :set_sponsor, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
     @sponsors = @event.sponsors
@@ -14,7 +14,7 @@ class SponsorsController < ApplicationController
     @sponsor = @event.sponsors.build(sponsor_params)
 
     if @sponsor.save
-      redirect_to @event
+      redirect_to event_sponsors_path(@event)
     else
       render 'new'
     end
@@ -36,6 +36,13 @@ class SponsorsController < ApplicationController
 
   def destroy
     @sponsor.destroy
+
+    redirect_to event_sponsors_path(@event)
+  end
+
+  def toggle_status
+
+    @sponsor.deactive? ? @sponsor.active! : @sponsor.deactive!
 
     redirect_to event_sponsors_path(@event)
   end
