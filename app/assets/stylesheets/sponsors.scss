@@ -11,8 +11,10 @@
 
   ul.tabs {
     list-style-type: none;
+
     li {
       font-size: 16px;
+
       a {
         display: flex;
         color: var(--text-color);
@@ -20,6 +22,7 @@
         font-weight: bold;
         text-decoration: none;
       }
+
       a:hover {
         border-bottom: 3px solid var(--active-tab-color);
         color: var(--active-tab-color);
@@ -66,7 +69,7 @@
     border-radius: 12px;
   }
 
-  table.list-main{
+  table.list-main {
     width: 100%;
     text-align: center;
 
@@ -77,6 +80,7 @@
       border-top: 1px solid rgb(195, 190, 190);
       border-collapse: collapse;
     }
+
     td {
       padding: 15px 5px 15px 5px;
       color: var(--text-color);
@@ -89,15 +93,15 @@
     border-radius: 10px;
     text-align: center;
     padding: 5px 20px;
+
+    &.active {
+      background: var(--btn-background);
+    }
+    &.deactive {
+      background: #becad6;
+    }
   }
 
-  .status.active {
-    background: var(--btn-background);
-  }
-
-  .status.deactive {
-    background: #becad6;
-  }
 
   .options {
     border: 1px solid #9e9898;
