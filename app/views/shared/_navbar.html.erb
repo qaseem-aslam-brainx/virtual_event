@@ -1,5 +1,6 @@
 <nav>
-  <div class="d-flex justify-content-end container p-0">
+  <div class="d-flex justify-content-between container p-0">
+    <%= image_tag "brainx-logo.png", class: "logo"%>
     <% if user_signed_in? %>
       <div class="outer-border">
         <button class="circle-button" type="button" data-toggle="dropdown"><%= current_user.first_name[0].upcase %></button>
