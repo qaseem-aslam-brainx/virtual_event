@@ -1,0 +1,5 @@
+$("#toggle_text_<%= @sponsor.id %>").text("<%= status_link_text(@sponsor) %>");
+$("#toggle_status_text_<%= @sponsor.id %>").text("<%= @sponsor.status.capitalize %>");
+
+document.getElementById("toggle_status_text_<%= @sponsor.id %>").classList.remove("<%= @sponsor.active? ? "deactive" : "active" %>")
+document.getElementById("toggle_status_text_<%= @sponsor.id %>").classList.add("<%= @sponsor.active? ? "active" : "deactive" %>")

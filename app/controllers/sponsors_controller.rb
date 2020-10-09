@@ -41,10 +41,7 @@ class SponsorsController < ApplicationController
   end
 
   def toggle_status
-
     @sponsor.deactive? ? @sponsor.active! : @sponsor.deactive!
-
-    redirect_to event_sponsors_path(@event)
   end
 
   private

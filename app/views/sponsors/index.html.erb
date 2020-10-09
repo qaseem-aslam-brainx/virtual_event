@@ -35,7 +35,7 @@
             <td><%= image_tag sponsor.logo, class: "logo" %></td>
             <td><%= sponsor.name %></td>
             <td><%= sponsor.website %></td>
-            <td><span class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span></td>
+            <td><span id="<%= "toggle_status_text_#{sponsor.id}" %>" class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span></td>
             <td>
               <div class="dropdown">
                 <a href="#" class="fas fa-ellipsis-h options" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,8 +45,9 @@
                     <i class="fas fa-pencil-alt fa-fw fa-xs p-2"></i><span class="m-3">Edit Sponsor</span>
                   <% end %>
                   <br>
-                  <%= link_to toggle_status_event_sponsor_path(@event, sponsor), class: "black" do %>
-                    <i class="fas fa-check-circle fa-fw fa-xs p-2"></i><span class="m-3"><%= sponsor.deactive? ? "Activate" : "Deactivate" %></span>
+                  <i class="fas fa-check-circle fa-fw fa-xs ml-1 mr-2"></i>
+                  <%= link_to toggle_status_event_sponsor_path(@event, sponsor), :remote => true, :id => "toggle_text_#{sponsor.id}" do %>
+                    <span><%= status_link_text(sponsor) %></span>
                   <% end %>
                   <br>
                   <%= link_to event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' }, class: "red" do %>
