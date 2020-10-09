@@ -20,7 +20,7 @@
     </div>
     <div class="custom-file">
       <%= form.label "Upload a logo", class: "custom-file-label" %>
-      <%= form.file_field :logo, class: "custom-file-input" %>
+      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png' %>
     </div>
     <div class="form-group">
       <%= form.label :website %>
