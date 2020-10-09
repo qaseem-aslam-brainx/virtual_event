@@ -14,8 +14,10 @@
           <p class="email"><%= current_user.email %></p>
         </div>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>&nbsp;|&nbsp;
-      <%= link_to "Login", new_user_session_path %>
+      <div>
+        <%= link_to "Sign up", new_user_registration_path %>&nbsp;|&nbsp;
+        <%= link_to "Login", new_user_session_path %>
+      </div>
     <% end %>
     </div>
   </div>
