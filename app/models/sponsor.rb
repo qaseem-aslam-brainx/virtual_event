@@ -1,11 +1,11 @@
 class Sponsor < ApplicationRecord
   # Constants
-  enum status: [ :active, :deactive ]
 
   # Attributes
 
   # Extensions
-
+  enum status: [ :active, :deactive ]
+  
   # Relationships
   belongs_to :event
 
