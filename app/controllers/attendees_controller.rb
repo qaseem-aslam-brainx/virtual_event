@@ -14,7 +14,7 @@ class AttendeesController < ApplicationController
     @attendee = @event.attendees.build(attendee_params)
 
     if @attendee.save
-      redirect_to events_path
+      redirect_to event_attendees_path(@event)
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class AttendeesController < ApplicationController
   def destroy
     @attendee.destroy
 
-    redirect_to event_attendees_path(@event) 
+    redirect_to event_attendees_path(@event)
   end
 
   private
