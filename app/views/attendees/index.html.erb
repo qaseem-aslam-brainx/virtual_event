@@ -1,0 +1,32 @@
+<h1>All Attendees</h1>
+<p id="notice"><%= notice %></p>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone No</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @attendees.each do |attendee| %>
+    <tr>
+      <td><%= attendee.first_name + ' ' + attendee.last_name %></td>
+      <td><%= attendee.email %></td>
+      <td><%= attendee.phone_no %></td>
+
+      <td><%= link_to 'Show', event_attendee_path(event_id: @event.id, id: attendee.id) %></td>
+      <td><%= link_to 'Edit', edit_event_attendee_path(@event, attendee) %></td>
+      <td><%= link_to 'Destroy', event_attendee_path(@event, attendee),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_event_sponsor_path(@event) %>
