@@ -9,10 +9,9 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    # @event.user_id = current_user.id
 
     if @event.save
-      redirect_to @event
+      redirect_to events_path(@event)
     else
       render 'new'
     end
@@ -28,10 +27,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.user_id = current_user.id
 
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to events_path(@event)
     else
       render 'edit'
     end
