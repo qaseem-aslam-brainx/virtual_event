@@ -1,0 +1,18 @@
+<p>
+  <strong>Name:</strong>
+  <%= @attendee.first_name + ' ' + @attendee.last_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @attendee.email %>
+</p>
+<p>
+  <strong>Phone No:</strong>
+  <%= @attendee.phone_no %>
+</p>
+
+<td><%= link_to 'Edit', edit_event_attendee_path %></td> |
+<td><%= link_to 'Destroy', event_attendees_path,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td> |
+<td><%= link_to 'Back', event_attendees_path %></td>

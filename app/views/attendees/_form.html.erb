@@ -1,0 +1,54 @@
+<%= form_with(model: [@event, @attendee], local: true) do |form| %>
+  <% if @attendee.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@attendee.errors.count, "error") %> prohibited
+        this attendee from being saved:
+      </h2>
+      <ul>
+        <% @attendee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </p>
+  <p>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </p>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.label :resume %>
+    <%= form.text_field :resume %>
+  </p>
+  <p>
+    <%= form.label :phone_no %>
+    <%= form.text_field :phone_no %>
+  </p>
+  <p>
+    <%= form.label :veteran %>
+    <%= form.check_box :veteran %>
+  </p>
+  <p>
+    <%= form.label :certifications %>
+    <%= form.text_field :certifications %>
+  </p>
+  <p>
+    <%= form.label :education %>
+    <%= form.text_field :education %>
+  </p>
+  <p>
+    <%= form.label :reference %>
+    <%= form.text_field :reference %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     resources :sponsors
+    resources :attendees
   end
 
   root 'login#index'
