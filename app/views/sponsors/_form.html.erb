@@ -1,38 +1,40 @@
-<%= form_with(model: [@event, @sponsor], local: true) do |form| %>
-  <% if @sponsor.errors.any? %>
+<div class="container-md">
+  <%= form_with(model: [@event, @sponsor], local: true) do |form| %>
+    <% if @sponsor.errors.any? %>
 
-    <div id="error_explanation">
-      <h2>
-        Unable to create sponsor because of <%= pluralize(@sponsor.errors.count, "error") %>
-      </h2>
-      <ul>
-        <% @sponsor.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <div id="error_explanation">
+        <h2>
+          Unable to create sponsor because of <%= pluralize(@sponsor.errors.count, "error") %>
+        </h2>
+        <ul>
+          <% @sponsor.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
     </div>
+    <div class="form-group">
+      <%= form.label :logo %>
+      <%= form.text_field :logo, class: "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :website %>
+      <%= form.text_field :website, class: "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :status %>
+      <%= form.radio_button :status, 'active' %>
+      <%= form.label :status_active, 'Active' %>
+      <%= form.radio_button :status, 'deactive' %>
+      <%= form.label :status_deactive, 'Deactive' %>
+    </div>
+    <p>
+      <%= form.submit class: "bg-color btn-lg"%>
+    </p>
   <% end %>
-
-  <p>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :logo %>
-    <%= form.text_field :logo %>
-  </p>
-  <p>
-    <%= form.label :website %>
-    <%= form.text_field :website %>
-  </p>
-  <p>
-    <%= form.label :status %>
-    <%= form.radio_button :status, 'active' %>
-    <%= form.label :status_active, 'Active' %>
-    <%= form.radio_button :status, 'deactive' %>
-    <%= form.label :status_deactive, 'Deactive' %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+</div>

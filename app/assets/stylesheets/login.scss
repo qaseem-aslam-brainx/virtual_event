@@ -1,3 +1,60 @@
 // Place all the styles related to the Login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.login {
+  .card {
+    background: #ffffff;
+    box-shadow: 0 6px 10px #6596ff26;
+    border: 1px solid #00000000;
+    border-radius: 12px;
+    max-width: 22%;
+    width: auto;
+    height: auto;
+    margin-top: 9rem;
+
+    h2 {
+      font: normal normal 900 25px/45px Avenir;
+    }
+
+    label {
+      color: #363035;
+      font: normal normal medium 15px/21px Avenir;
+      margin-bottom: .4em;
+      margin-top: 1em;
+    }
+
+    input:not([type="hidden"]):not([type="checkbox"]):not([type="submit"]) {
+      padding: 20px 0 22px 20px;
+      width: 315px;
+      height: 30px;
+      background: #ffffff;
+      border: 2px solid #dedede;
+      border-radius: 2px;
+    }
+
+    .forgot-pass {
+      width: 100%;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: #0e64bc;
+        font-size: 16px;
+      }
+    }
+
+
+    input[type="submit"] {
+      width: 315px;
+      height: 50px;
+      background: #79d733 0 0 no-repeat padding-box;
+      box-shadow: 0 6px 10px #6596ff26;
+      border-radius: 12px;
+      opacity: 1;
+      font-size: 16px;
+      border: 0.5px solid #afafaf;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

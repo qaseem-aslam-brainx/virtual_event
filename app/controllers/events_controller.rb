@@ -6,16 +6,14 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.new
   end
 
   def create
-    @event = Event.new(event_params)
-
-    @event.user_id = session[:user_id]
+    @event = current_user.events.build(event_params)
 
     if @event.save
-      redirect_to @event
+      redirect_to events_path(@event)
     else
       render 'new'
     end
@@ -29,7 +27,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to events_path(@event)
     else
       render 'edit'
     end
@@ -49,6 +47,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :logo, :date, :time_start, :time_end)
+    params.require(:event).permit(:title, :logo, :date, :time_start, :time_end, :status)
   end
 end

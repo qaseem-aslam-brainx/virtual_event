@@ -1,26 +1,53 @@
-<%= link_to 'New Event', new_event_path %>
-<h1>All Events</h1>
-<table border="1">
-  <tr>
-    <th>Logo</th>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Time Start</th>
-    <th>Time End</th>
-  </tr>
-  <% @events.each do |event| %>
-    <tr>
-      <td><%= event.logo %></td>
-      <td><%= event.title %></td>
-      <td><%= event.date %></td>
-      <td><%= event.time_start %></td>
-      <td><%= event.time_end %></td>
+<div class="events">
+  <div class="container p-0 mt-3">
+    <div class="row justify-content-between mt-5 pl-3 pr-3">
+      <span class="heading">Events</span>
+      <%= link_to 'Create Event', new_event_path, method: :get, class: "event-button bg-color" %>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-4">
 
-      <td><%= link_to 'Show', event_path(event) %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event_path(event),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+      <% @events.each do |event| %>
+
+        <div class="col">
+          <div class="event-card p-3 mb-3">
+          <div class="d-flex justify-content-between">
+            <%= link_to event_sponsors_path(event) do %>
+              <h2 class="sub-heading"><%= event.title %></h2>
+            <% end %>
+
+            <div class="switch custom-control custom-switch">
+              <% if event.status == "active" %>
+                <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example" checked>
+              <% else %>
+                <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example">
+              <% end %>
+              <label class="custom-control-label" for="<%= "switch" + event.id.to_s %>"></label>
+            </div>
+          </div>
+
+          <p class="m-0 mt-4 dim-heading">Date</p>
+          <p class="data-format mb-0"><%= event.date %></p>
+
+          <div class="col p-0 d-flex justify-content-between">
+            <div class="mt-4">
+              <p class="m-0 dim-heading">Time</p>
+              <p class="data-format"><%= event.time_start.strftime("%I:%M %p") + ' - ' + event.time_end.strftime("%I:%M %p") %> </p>
+            </div>
+            <div class="icons">
+              <%= link_to edit_event_path(event) do %>
+                <i class="fas fa-pencil-alt icon blue"></i>
+              <% end %>
+              <%= link_to event_path(event),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } do %>
+                <i class="fas fa-trash icon red"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

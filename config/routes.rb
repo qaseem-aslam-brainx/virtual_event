@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :events do
-    resources :sponsors
+    resources :sponsors do
+      get :toggle_status, on: :member
+    end
     resources :attendees
   end
 end

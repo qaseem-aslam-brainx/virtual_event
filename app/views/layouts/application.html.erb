@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VirtualEvent</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <title>
+      <%= if content_for?(:title)
+            yield(:title) + ' | '
+          end %>
+      Virtual Event
+    </title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Avenir">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <p class="navbar-text float-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        Username is <strong><%= current_user.first_name + ' ' +current_user.last_name %></strong>.<br>
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
-    </p>
-
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
