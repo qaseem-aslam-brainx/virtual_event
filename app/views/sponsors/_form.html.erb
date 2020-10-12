@@ -1,40 +1,38 @@
-<div class="container-md">
-  <%= form_with(model: [@event, @sponsor], local: true) do |form| %>
-    <% if @sponsor.errors.any? %>
+<%= form_with(model: [@event, @sponsor], local: true) do |form| %>
+  <% if @sponsor.errors.any? %>
 
-      <div id="error_explanation">
-        <h2>
-          Unable to create sponsor because of <%= pluralize(@sponsor.errors.count, "error") %>
-        </h2>
-        <ul>
-          <% @sponsor.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+    <div id="error_explanation">
+      <h2>
+        Unable to create sponsor because of <%= pluralize(@sponsor.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @sponsor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    <div class="custom-file">
-      <%= form.label "Upload a logo", class: "custom-file-label" %>
-      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png' %>
-    </div>
-    <div class="form-group">
-      <%= form.label :website %>
-      <%= form.text_field :website, class: "form-control"  %>
-    </div>
-    <div class="form-group">
-      <%= form.label :status %>
-      <%= form.radio_button :status, 'active' %>
-      <%= form.label :status_active, 'Active' %>
-      <%= form.radio_button :status, 'deactive' %>
-      <%= form.label :status_deactive, 'Deactive' %>
-    </div>
-    <p>
-      <%= form.submit class: "bg-color btn-lg"%>
-    </p>
   <% end %>
-</div>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="custom-file">
+    <%= form.label "Upload a logo", class: "custom-file-label" %>
+    <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :website %>
+    <%= form.text_field :website, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.radio_button :status, 'active' %>
+    <%= form.label :status_active, 'Active' %>
+    <%= form.radio_button :status, 'deactive' %>
+    <%= form.label :status_deactive, 'Deactive' %>
+  </div>
+  <p>
+    <%= form.submit class: "bg-color btn-lg" %>
+  </p>
+<% end %>

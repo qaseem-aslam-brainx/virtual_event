@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .sponsors {
+  min-width: fit-content;
   .heading {
     font-size: 25px;
     display: flex;
@@ -40,16 +41,17 @@
   }
 
   .back-btn {
-    width: 121px;
+    width: fit-content;
     height: 42px;
     background: #e9ecef;
     border-radius: 10px;
     text-align: center;
     font: normal normal 900 16px/22px Avenir;
     text-decoration: none;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 28px 10px 28px;
     border: none;
     letter-spacing: 0.8px;
+
     color: var(--text-color);
     margin-bottom: 5px;
   }

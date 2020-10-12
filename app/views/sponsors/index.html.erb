@@ -1,19 +1,23 @@
-<div class="sponsors">
+<div class="sponsors" >
   <div class="container mt-5">
     <div>
       <h1 class="heading">Virtual Fair</h1>
     </div>
-    <div class="row justify-content-between p-4">
-      <ul class="nav tabs ml-4">
-        <li><a href="#">Event Detail</a></li>
-        <li><a href="#">Vendor</a></li>
-        <li><a href="#" class="active-tab">Sponsors</a></li>
-        <li><a href="#">Ateendees</a></li>
-      </ul>
+    <div class="row pt-4 pb-4">
+      <div class="col">
+        <ul class="nav tabs ml-4">
+          <li><a href="#">Event Detail</a></li>
+          <li><a href="#">Vendor</a></li>
+          <li><a href="#" class="active-tab">Sponsors</a></li>
+          <li><a href="#">Ateendees</a></li>
+        </ul>
+      </div>
 
-      <%= link_to events_path, method: :get, class: "event-button back-btn" do %>
-        <i class="fa fa-arrow-left"></i>Back
-      <% end %>
+      <div class="col">
+        <%= link_to events_path, method: :get, class: "event-button back-btn float-right" do %>
+          <i class="fa fa-arrow-left"></i>Back
+        <% end %>
+      </div>
     </div>
     <div class="card p-0">
       <div class="row justify-content-between pl-5 pr-5 pt-4 pb-4">
