@@ -32,7 +32,7 @@
         <% @sponsors.each do |sponsor| %>
           <tr>
             <td><%= sponsor.id %></td>
-            <td><%= image_tag sponsor.logo, class: "logo" %></td>
+            <td><%= image_tag sponsor.logo.variant(resize_to_limit: [60, nil]) %></td>
             <td><%= sponsor.name %></td>
             <td><%= sponsor.website %></td>
             <td><span id="<%= "toggle_status_text_#{sponsor.id}" %>" class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span></td>
