@@ -7,9 +7,6 @@
     box-shadow: 0 6px 10px #6596ff26;
     border: 1px solid #00000000;
     border-radius: 12px;
-    max-width: 22%;
-    width: auto;
-    height: auto;
     margin-top: 9rem;
 
     h2 {
@@ -25,8 +22,6 @@
 
     input:not([type="hidden"]):not([type="checkbox"]):not([type="submit"]) {
       padding: 20px 0 22px 20px;
-      width: 315px;
-      height: 30px;
       background: #ffffff;
       border: 2px solid #dedede;
       border-radius: 2px;
@@ -45,8 +40,6 @@
 
 
     input[type="submit"] {
-      width: 315px;
-      height: 50px;
       background: #79d733 0 0 no-repeat padding-box;
       box-shadow: 0 6px 10px #6596ff26;
       border-radius: 12px;
