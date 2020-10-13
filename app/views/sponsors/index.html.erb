@@ -1,4 +1,4 @@
-<div class="sponsors" >
+<div class="sponsors">
   <div class="container mt-5">
     <div>
       <h1 class="heading">Virtual Fair</h1>
@@ -19,50 +19,55 @@
         <% end %>
       </div>
     </div>
-    <div class="card p-0">
+    <div class="card p-0 mb-3">
       <div class="row justify-content-between pl-5 pr-5 pt-4 pb-4">
         <span class="heading mt-1">Sponsors</span>
         <%= link_to 'Add Sponsor', new_event_sponsor_path, method: :get, class: "sponsor-button" %>
       </div>
-      <table class="list-main" cellspacing="0">
-        <tr>
-          <th>#</th>
-          <th>Sponsor Logo</th>
-          <th>Sponsor Name</th>
-          <th>Sponsor Website</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-        <% @sponsors.each do |sponsor| %>
+      <div class="overflow-auto">
+        <table class="list-main" cellspacing="0">
           <tr>
-            <td><%= sponsor.id %></td>
-            <td><%= image_tag sponsor.logo.variant(resize_to_limit: [60, nil]) %></td>
-            <td><%= sponsor.name %></td>
-            <td><%= sponsor.website %></td>
-            <td><span id="<%= "toggle_status_text_#{sponsor.id}" %>" class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span></td>
-            <td>
-              <div class="dropdown">
-                <a href="#" class="fas fa-ellipsis-h options" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                </a>
-                <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
-                  <%= link_to edit_event_sponsor_path(@event, sponsor) do %>
-                    <i class="fas fa-pencil-alt fa-fw fa-xs p-2"></i><span class="m-3">Edit Sponsor</span>
-                  <% end %>
-                  <br>
-                  <i class="fas fa-check-circle fa-fw fa-xs ml-1 mr-2"></i>
-                  <%= link_to toggle_status_event_sponsor_path(@event, sponsor), :remote => true, :id => "toggle_text_#{sponsor.id}" do %>
-                    <span><%= status_link_text(sponsor) %></span>
-                  <% end %>
-                  <br>
-                  <%= link_to event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' }, class: "red" do %>
-                    <i class="fas fa-trash-alt fa-fw fa-xs red p-2"></i><span class="m-3">Delete</span>
-                  <% end %>
-                </div>
-              </div>
-            </td>
+            <th>#</th>
+            <th>Sponsor Logo</th>
+            <th>Sponsor Name</th>
+            <th>Sponsor Website</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
-        <% end %>
-      </table>
+          <% @sponsors.each do |sponsor| %>
+            <tr>
+              <td><%= sponsor.id %></td>
+              <td><%= image_tag sponsor.logo.variant(resize_to_limit: [60, nil]) %></td>
+              <td><%= sponsor.name %></td>
+              <td><%= sponsor.website %></td>
+              <td>
+                <span id="<%= "toggle_status_text_#{sponsor.id}" %>" class="status <%= sponsor.status %>"><%= sponsor.status.capitalize %></span>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <a href="#" class="fas fa-ellipsis-h options" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </a>
+                  <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                    <%= link_to edit_event_sponsor_path(@event, sponsor) do %>
+                      <i class="fas fa-pencil-alt fa-fw fa-xs p-2"></i><span class="m-3">Edit Sponsor</span>
+                    <% end %>
+                    <br>
+                    <i class="fas fa-check-circle fa-fw fa-xs ml-1 mr-2"></i>
+                    <%= link_to toggle_status_event_sponsor_path(@event, sponsor), :remote => true, :id => "toggle_text_#{sponsor.id}" do %>
+                      <span><%= status_link_text(sponsor) %></span>
+                    <% end %>
+                    <br>
+                    <%= link_to event_sponsor_path(@event, sponsor), method: :delete, data: { confirm: 'Are you sure?' }, class: "red" do %>
+                      <i class="fas fa-trash-alt fa-fw fa-xs red p-2"></i><span class="m-3">Delete</span>
+                    <% end %>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>
