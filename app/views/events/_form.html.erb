@@ -1,4 +1,4 @@
-<div class="container col-3">
+<div class="col">
   <%= form_with model: @event, local: true do |form| %>
     <% if @event.errors.any? %>
       <div id="error_explanation">
@@ -17,9 +17,9 @@
       <%= form.label :title %><br>
       <%= form.text_field :title, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <%= form.label :logo %>
-      <%= form.text_field :logo, class: "form-control" %>
+    <div class="custom-file">
+      <%= form.label "Upload a logo", class: "custom-file-label" %>
+      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png'  %>
     </div>
     <div class="form-group">
       <%= form.label :date %>

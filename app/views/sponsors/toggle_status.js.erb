@@ -1,0 +1,7 @@
+var statusToggle = document.getElementById("toggle_status_text_<%= @sponsor.id %>")
+
+document.getElementById("toggle_text_<%= @sponsor.id %>").innerText = "<%= status_link_text(@sponsor) %>"
+statusToggle.innerText = "<%= @sponsor.status.capitalize %>"
+
+statusToggle.classList.remove("<%= @sponsor.active? ? "deactive" : "active" %>")
+statusToggle.classList.add("<%= @sponsor.active? ? "active" : "deactive" %>")
