@@ -18,12 +18,12 @@
     <%= form.text_field :name, class: "form-control" %>
   </div>
   <div data-controller="preview">
-    <div class="custom-file" data-controller="preview">
-      <%= form.label "Upload a logo", class: "custom-file-label", id: "logo-label" %>
-      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png', id: "image-path", "data-action" => "change->preview#show" %>
+    <div class="custom-file">
+      <%= form.label "Upload a logo", class: "custom-file-label", "data-target": "preview.logoLabel" %>
+      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png', "data-target": "preview.imgPath", "data-action": "change->preview#show" %>
     </div>
+    <%= image_tag "transparent.png", class: "logo-preview", "data-target": "preview.imgPreview"%>
   </div>
-  <%= image_tag "transparent.png", class: "logo-preview", id: "img-preview" %>
   <div class="form-group">
     <%= form.label :website %>
     <%= form.text_field :website, class: "form-control" %>

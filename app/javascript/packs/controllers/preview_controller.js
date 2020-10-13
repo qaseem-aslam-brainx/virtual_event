@@ -1,15 +1,20 @@
 import { Controller } from "stimulus"
-export default class extends Controller{
+
+export default class extends Controller {
+  // change impPath to imageInput
+  static targets = ["imgPath", "imgPreview", "logoLabel"]
+
   show() {
-    var file = document.getElementById("image-path").files[0];
+    let file = this.imgPathTarget.files[0]
+    this.logoLabelTarget.innerText = file.name
 
-    console.log(file);
+    this.reader = new FileReader()
+    this.reader.onload = this.setPreview.bind(this)
 
-    var reader = new FileReader();
-    reader.onload = function(){
-      document.getElementById("img-preview").src = reader.result;
-    };
-    reader.readAsDataURL(file);
-    document.getElementById("logo-label").innerText = file.name
+    this.reader.readAsDataURL(file)
+  }
+
+  setPreview() {
+    this.imgPreviewTarget.src = this.reader.result
   }
 }
