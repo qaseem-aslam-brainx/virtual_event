@@ -1,4 +1,4 @@
-<div class="col">
+<div class="events col">
   <%= form_with model: @event, local: true do |form| %>
     <% if @event.errors.any? %>
       <div id="error_explanation">
@@ -17,17 +17,21 @@
       <%= form.label :title %><br>
       <%= form.text_field :title, class: "form-control" %>
     </div>
-    <div class="custom-file">
-      <%= form.label "Upload a logo", class: "custom-file-label" %>
-      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png'  %>
+
+    <div data-controller="preview">
+      <div class="custom-file" data-controller="preview">
+        <%= form.label "Upload a logo", class: "custom-file-label", id: "logo-label"%>
+        <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png', id: "image-path", "data-action" => "change->preview#show" %>
+      </div>
     </div>
+    <%= image_tag "transparent.png", class: "logo-preview", id: "img-preview" %>
     <div class="form-group">
       <%= form.label :date %>
-      <%= form.date_field(:date, class: "form-control")%>
+      <%= form.date_field(:date, class: "form-control") %>
     </div>
     <div class="form-group">
       <%= form.label :time_start %>
-      <%= time_field(:event, :time_start, class: "form-control")%>
+      <%= time_field(:event, :time_start, class: "form-control") %>
     </div>
     <div class="form-group">
       <%= form.label :time_end %>
