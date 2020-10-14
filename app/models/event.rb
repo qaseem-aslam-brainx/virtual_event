@@ -11,9 +11,12 @@ class Event < ApplicationRecord
   has_many :sponsors
   has_many :attendees
   has_one_attached :logo
+  has_many :event_times
+  accepts_nested_attributes_for :event_times, allow_destroy: true, reject_if:
+      lambda { |attributes| attributes['date'].blank? || attributes['time_start'].blank? || attributes['time_end'].blank? }
 
   # Validations
-  validates :title, :logo, :date, :time_start, :time_end, presence: true
+  validates :title, :logo, presence: true
   validate :acceptable_image
 
   # Scopes

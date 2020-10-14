@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_090251) do
+ActiveRecord::Schema.define(version: 2020_10_14_131605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,19 @@ ActiveRecord::Schema.define(version: 2020_10_09_090251) do
     t.index ["event_id"], name: "index_attendees_on_event_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "logo"
-    t.string "title"
+  create_table "event_times", force: :cascade do |t|
     t.date "date"
     t.time "time_start"
     t.time "time_end"
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_times_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "logo"
+    t.string "title"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -92,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_090251) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendees", "events"
+  add_foreign_key "event_times", "events"
   add_foreign_key "events", "users"
   add_foreign_key "sponsors", "events"
 end

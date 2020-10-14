@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.new
+    @event.event_times.build
   end
 
   def create
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event.event_times.build
   end
 
   def update
@@ -47,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :logo, :date, :time_start, :time_end, :status)
+    params.require(:event).permit(:title, :logo, :status, event_times_attributes: [:id, :date, :time_start, :time_end, :_destroy])
   end
 end

@@ -1,4 +1,4 @@
-<div class="col">
+<div class="events col">
   <%= form_with model: @event, local: true do |form| %>
     <% if @event.errors.any? %>
       <div id="error_explanation">
@@ -17,22 +17,35 @@
       <%= form.label :title %><br>
       <%= form.text_field :title, class: "form-control" %>
     </div>
-    <div class="custom-file">
-      <%= form.label "Upload a logo", class: "custom-file-label" %>
-      <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png'  %>
+
+    <div data-controller="preview">
+      <div class="custom-file">
+        <%= form.label "Upload a logo", class: "custom-file-label", "data-target": "preview.logoLabel" %>
+        <%= form.file_field :logo, class: "custom-file-input", accept: 'image/jpeg, image/png', "data-target": "preview.imageInput", "data-action": "change->preview#show" %>
+      </div>
+      <%= image_tag "transparent.png", class: "logo-preview", "data-target": "preview.imgPreview" %>
     </div>
-    <div class="form-group">
-      <%= form.label :date %>
-      <%= form.date_field(:date, class: "form-control")%>
-    </div>
-    <div class="form-group">
-      <%= form.label :time_start %>
-      <%= time_field(:event, :time_start, class: "form-control")%>
-    </div>
-    <div class="form-group">
-      <%= form.label :time_end %>
-      <%= time_field(:event, :time_end, class: "form-control") %>
-    </div>
+    <%= form.fields_for :event_times do |event_time| %>
+      <div class="row">
+        <div class="form-group col p-0">
+          <% if event_time.object.persisted? %>
+            <%= event_time.check_box :_destroy %>
+          <% end %>
+
+          <%= event_time.label :date %>
+          <%= event_time.date_field(:date, class: "form-control") %>
+        </div>
+        <div class="form-group col pl-4 pr-4">
+          <%= form.label :time_start %>
+          <%= event_time.time_field(:time_start, class: "form-control") %>
+        </div>
+        <div class="form-group col p-0 pr-2">
+          <%= form.label :time_end %>
+          <%= event_time.time_field(:time_end, class: "form-control") %>
+        </div>
+        <a href="#" class="align-self-center pt-3 black"><i class="fas fa-times fa-2x"></i></a>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= form.label :status %>
       <%= form.radio_button :status, 'active' %>

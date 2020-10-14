@@ -10,41 +10,41 @@
 
         <div class="col">
           <div class="event-card p-3 mb-3">
-          <div class="d-flex justify-content-between">
-            <%= link_to event_sponsors_path(event) do %>
-              <h2 class="sub-heading"><%= event.title %></h2>
-            <% end %>
-
-            <div class="switch custom-control custom-switch">
-              <% if event.status == "active" %>
-                <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example" checked>
-              <% else %>
-                <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example">
+            <div class="d-flex justify-content-between">
+              <%= link_to event_sponsors_path(event) do %>
+                <h2 class="sub-heading"><%= event.title %></h2>
               <% end %>
-              <label class="custom-control-label" for="<%= "switch" + event.id.to_s %>"></label>
+
+              <div class="switch custom-control custom-switch">
+                <% if event.status == "active" %>
+                  <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example" checked>
+                <% else %>
+                  <input type="checkbox" class="custom-control-input" id="<%= "switch" + event.id.to_s %>" name="example">
+                <% end %>
+                <label class="custom-control-label" for="<%= "switch" + event.id.to_s %>"></label>
+              </div>
+            </div>
+
+            <p class="m-0 mt-4 dim-heading">Date</p>
+            <p class="data-format mb-0"><%= event.event_times.first.date %></p>
+
+            <div class="col p-0 d-flex justify-content-between">
+              <div class="mt-4">
+                <p class="m-0 dim-heading">Time</p>
+                <p class="data-format"><%= event.event_times.first.time_start.strftime("%I:%M %p") + ' - ' + event.event_times.first.time_end.strftime("%I:%M %p") %> </p>
+              </div>
+              <div class="icons">
+                <%= link_to edit_event_path(event) do %>
+                  <i class="fas fa-pencil-alt icon blue"></i>
+                <% end %>
+                <%= link_to event_path(event),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } do %>
+                  <i class="fas fa-trash icon red"></i>
+                <% end %>
+              </div>
             </div>
           </div>
-
-          <p class="m-0 mt-4 dim-heading">Date</p>
-          <p class="data-format mb-0"><%= event.date %></p>
-
-          <div class="col p-0 d-flex justify-content-between">
-            <div class="mt-4">
-              <p class="m-0 dim-heading">Time</p>
-              <p class="data-format"><%= event.time_start.strftime("%I:%M %p") + ' - ' + event.time_end.strftime("%I:%M %p") %> </p>
-            </div>
-            <div class="icons">
-              <%= link_to edit_event_path(event) do %>
-                <i class="fas fa-pencil-alt icon blue"></i>
-              <% end %>
-              <%= link_to event_path(event),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } do %>
-                <i class="fas fa-trash icon red"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
         </div>
       <% end %>
     </div>
